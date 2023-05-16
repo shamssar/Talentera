@@ -8,16 +8,12 @@ var allAreLessThanSeven = all([1,2,9], function(num){
 console.log(allAreLessThanSeven); // false
 
 function all(array, callback){
-  var copy = copy || array.slice(); 
-
-  if(copy.length === 0) return true;
-
-  if(callback(copy[0])){
-    copy.shift(); 
-    return all(copy, callback);
-  } else {
+  for(let i =0;i<array.length;i++){
+    if(!callback(array[i])){
       return false;
     }
+  }
+  return true;
 }
 
   //-----------------------------------------------------------

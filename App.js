@@ -1,20 +1,26 @@
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault();
 
-const inputs = document.querySelectorAll(".input");
+  // Get form values
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var message = document.getElementById("message").value;
 
-function focusFunc() {
-  let parent = this.parentNode;
-  parent.classList.add("focus");
-}
-
-function blurFunc() {
-  let parent = this.parentNode;
-  if (this.value == "") {
-    parent.classList.remove("focus");
+  // Perform form validation (optional)
+  if (name === "" || email === "" || message === "") {
+    alert("Please fill in all fields.");
+    return;
   }
-}
 
-inputs.forEach((input) => {
-  input.addEventListener("focus", focusFunc);
-  input.addEventListener("blur", blurFunc);
+  // Send form data to server (you can customize this part)
+  console.log("Name: " + name);
+  console.log("Email: " + email);
+  console.log("Message: " + message);
+
+  // Reset form fields
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("message").value = "";
+
+  alert("Form submitted successfully!");
 });
-
